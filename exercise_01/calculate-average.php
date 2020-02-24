@@ -1,12 +1,10 @@
 <?php 
+include '../isPostMethod.php';
+
 if (isPostMethod()) {
   $floatArray = stringToFloatArray($_POST["numbers"]);
   
   echo "Arithmetic average: " . calculateAverage($floatArray);
-}
-
-function stringToFloatArray($string) {
-  return array_map('floatval', explode(',', $string));
 }
 
 function calculateSum($array) {
@@ -25,7 +23,7 @@ function calculateAverage($array) {
   return $sum / $length;
 }
 
-function isPostMethod() {
-  return $_SERVER["REQUEST_METHOD"] == "POST";
+function stringToFloatArray($string) {
+  return array_map('floatval', explode(',', $string));
 }
 ?>
